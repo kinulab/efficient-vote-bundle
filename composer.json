@@ -1,0 +1,23 @@
+{
+    "name": "kinulab/efficient-vote-bundle",
+    "description": "Provide a system to enhance performances of the security by voters",
+    "type": "symfony-bundle",
+    "require": {
+        "symfony/dependency-injection": "~2.3||~3.0",
+        "symfony/config": "~2.3||~3.0",
+        "symfony/security-bundle": "~2.3||~3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Johan DESMYTER",
+            "email": "johan@etic.yt"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Kinulab\\EfficientVoteBundle\\": ""
+        }
+    }
+}
