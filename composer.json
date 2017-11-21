@@ -8,6 +8,9 @@
         "symfony/security-bundle": "^2.3||^3.0",
         "symfony/symfony": "^2.3||^3.3"
     },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^3.0"
+    },
     "license": "MIT",
     "authors": [
         {

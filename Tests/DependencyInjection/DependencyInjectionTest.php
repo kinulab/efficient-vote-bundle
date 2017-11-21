@@ -6,7 +6,7 @@ use Kinulab\EfficientVoteBundle\DependencyInjection\KinulabEfficientVoteExtensio
 use Kinulab\EfficientVoteBundle\DependencyInjection\Compiler\VoterCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class DependencyInjectionTest extends \PHPUnit_Framework_TestCase
+class DependencyInjectionTest extends \PHPUnit\Framework\TestCase
 {
     /** @var KinulabEfficientVoteExtension $extension */
     private $extension;

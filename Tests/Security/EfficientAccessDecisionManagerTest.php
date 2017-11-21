@@ -6,7 +6,7 @@ use Kinulab\EfficientVoteBundle\Security\EfficientAccessDecisionManager;
 use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
-class EfficientAccessDecisionManagerTest extends \PHPUnit_Framework_TestCase
+class EfficientAccessDecisionManagerTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testEfficientAccessDecisionManagerAffirmative()
