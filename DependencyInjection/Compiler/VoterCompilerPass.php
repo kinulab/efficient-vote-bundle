@@ -2,6 +2,8 @@
 
 namespace Kinulab\EfficientVoteBundle\DependencyInjection\Compiler;
 
+use Kinulab\EfficientVoteBundle\Authorization\TraceableAccessDecisionManager;
+use Kinulab\EfficientVoteBundle\Security\EfficientAccessDecisionManager;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -13,7 +15,18 @@ class VoterCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
+        if($container->hasDefinition('security.access.decision_manager')){
+            $this->configureAccessDecisionManager($container);
+        }
+
+        if($container->hasDefinition('debug.security.access.decision_manager')){
+            $this->configureDebugAccessDecisionManager($container);
+        }
+    }
+
+    protected function configureAccessDecisionManager(ContainerBuilder $container){
         $accessDecisionManager = $container->getDefinition('security.access.decision_manager');
+        $accessDecisionManager->setClass(EfficientAccessDecisionManager::class);
 
         $efficient_voters = [];
         foreach ($container->findTaggedServiceIds('security.efficient_voter') as $id => $tags) {
@@ -35,4 +48,10 @@ class VoterCompilerPass implements CompilerPassInterface
             $accessDecisionManager->addMethodCall('setEfficientVoters', [$efficient_voters]);
         }
     }
+
+    protected function configureDebugAccessDecisionManager(ContainerBuilder $container){
+        $accessDecisionManager = $container->getDefinition('debug.security.access.decision_manager');
+        $accessDecisionManager->setClass(TraceableAccessDecisionManager::class);
+    }
+
 }

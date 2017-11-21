@@ -28,7 +28,7 @@ class EfficientAccessDecisionManager extends AccessDecisionManager
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(array $voters = array(), $strategy = self::STRATEGY_AFFIRMATIVE, $allowIfAllAbstainDecisions = false, $allowIfEqualGrantedDeniedDecisions = true)
+    public function __construct($voters = array(), $strategy = self::STRATEGY_AFFIRMATIVE, $allowIfAllAbstainDecisions = false, $allowIfEqualGrantedDeniedDecisions = true)
     {
         $strategyMethod = 'decide'.ucfirst($strategy);
         if (!is_callable(array($this, $strategyMethod))) {
