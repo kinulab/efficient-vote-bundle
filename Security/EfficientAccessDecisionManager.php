@@ -66,7 +66,15 @@ class EfficientAccessDecisionManager extends AccessDecisionManager
      */
     public function decide(TokenInterface $token, array $attributes, $object = null)
     {
-        $this->voters = $this->standardVoters;
+        if(is_array($this->standardVoters)){
+            $this->voters = $this->standardVoters;
+        }elseif($this->standardVoters instanceof \Traversable){
+            $this->voters = [];
+            foreach($this->standardVoters as $voter){
+                $this->voters[] = $voter;
+            }
+        }
+
         foreach ($attributes as $attribut) {
             if (!strpos($attribut, '_')) {
                 continue;
