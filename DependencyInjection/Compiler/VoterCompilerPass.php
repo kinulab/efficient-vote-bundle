@@ -2,7 +2,6 @@
 
 namespace Kinulab\EfficientVoteBundle\DependencyInjection\Compiler;
 
-use Kinulab\EfficientVoteBundle\Authorization\TraceableAccessDecisionManager;
 use Kinulab\EfficientVoteBundle\Security\EfficientAccessDecisionManager;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -17,10 +16,6 @@ class VoterCompilerPass implements CompilerPassInterface
     {
         if($container->hasDefinition('security.access.decision_manager')){
             $this->configureAccessDecisionManager($container);
-        }
-
-        if($container->hasDefinition('debug.security.access.decision_manager')){
-            $this->configureDebugAccessDecisionManager($container);
         }
     }
 
@@ -47,11 +42,6 @@ class VoterCompilerPass implements CompilerPassInterface
         if (count($efficient_voters)) {
             $accessDecisionManager->addMethodCall('setEfficientVoters', [$efficient_voters]);
         }
-    }
-
-    protected function configureDebugAccessDecisionManager(ContainerBuilder $container){
-        $accessDecisionManager = $container->getDefinition('debug.security.access.decision_manager');
-        $accessDecisionManager->setClass(TraceableAccessDecisionManager::class);
     }
 
 }

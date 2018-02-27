@@ -3,14 +3,19 @@
 namespace Kinulab\EfficientVoteBundle\Security;
 
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
-use Symfony\Component\Security\Core\Authorization\AccessDecisionManager;
+use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
  * Overwrite of symfony AccessDecisionManager to add efficient voters.
  */
-class EfficientAccessDecisionManager extends AccessDecisionManager
+class EfficientAccessDecisionManager implements AccessDecisionManagerInterface
 {
+
+    const STRATEGY_AFFIRMATIVE = 'affirmative';
+    const STRATEGY_CONSENSUS = 'consensus';
+    const STRATEGY_UNANIMOUS = 'unanimous';
+
     private $voters = [];
     private $standardVoters = [];
     private $efficientVoters = [];
