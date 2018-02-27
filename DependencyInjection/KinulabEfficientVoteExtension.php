@@ -2,6 +2,7 @@
 
 namespace Kinulab\EfficientVoteBundle\DependencyInjection;
 
+use Kinulab\EfficientVoteBundle\Security\EfficientAccessDecisionManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -17,6 +18,6 @@ class KinulabEfficientVoteExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $container->setParameter('security.access.decision_manager.class', 'Kinulab\EfficientVoteBundle\Security\EfficientAccessDecisionManager');
+        $container->setParameter('security.access.decision_manager.class', EfficientAccessDecisionManager::class);
     }
 }
