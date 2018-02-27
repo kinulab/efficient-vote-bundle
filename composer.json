@@ -3,13 +3,13 @@
     "description": "Provide a system to enhance performances of the security by voters",
     "type": "symfony-bundle",
     "require": {
-        "symfony/dependency-injection": "^3.0",
-        "symfony/config": "^3.0",
-        "symfony/security-bundle": "^3.0",
-        "symfony/symfony": "^3.3"
+        "symfony/dependency-injection": "^3.0||^4.0",
+        "symfony/config": "^3.0||^4.0",
+        "symfony/security-bundle": "^3.0||^4.0",
+        "symfony/symfony": "^3.3||^4.0"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^3.0"
+        "symfony/phpunit-bridge": "^3.0||^4.0"
     },
     "license": "MIT",
     "authors": [
